@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FirstBC</string>
+    <string name="addBoxButton">Добавить квадрат</string>
 </resources>

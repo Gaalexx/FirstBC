@@ -55,6 +55,8 @@ import android.content.res.Configuration
 import android.widget.Button
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.stringResource
+import com.example.firstbc.ui.theme.FirstBCTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,7 +67,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 
 @Preview(showSystemUi = true)
 @Composable
@@ -94,9 +95,9 @@ fun BoxSet() {
     Box(modifier = Modifier.fillMaxSize()) {
         Button(
             onClick = { boxesAmount.value++ },
-            modifier = Modifier.align(Alignment.BottomEnd)
+            modifier = Modifier.align(Alignment.BottomEnd),
         ) {
-            Text(text = "ClickMe")
+            Text(text = stringResource(R.string.addBoxButton))
         }
     }
 }
