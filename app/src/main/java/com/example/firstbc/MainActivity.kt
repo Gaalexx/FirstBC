@@ -71,7 +71,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showSystemUi = true)
 @Composable
 fun BoxSet() {
-    val boxesAmount = rememberSaveable { mutableStateOf(0) }
+    val boxItems = rememberSaveable { mutableStateOf(listOf<BoxItemData>()) }
     val scrollState = rememberLazyGridState()
     val count : Int
 
@@ -88,13 +88,20 @@ fun BoxSet() {
         modifier = Modifier.fillMaxSize(),
         state = scrollState
     ) {
-        items(boxesAmount.value, key = { it }) { index ->
-            BoxItem(index)
+        items(
+            count = boxItems.value.size,
+            key = {index -> boxItems.value[index].id}
+        ) { index ->
+            BoxItem(boxItems.value[index].index)
         }
     }
     Box(modifier = Modifier.fillMaxSize()) {
         Button(
-            onClick = { boxesAmount.value++ },
+            onClick = { boxItems.value = boxItems.value + BoxItemData(
+                id = boxItems.value.size,
+                index = boxItems.value.size
+            )
+                      },
             modifier = Modifier.align(Alignment.BottomEnd),
         ) {
             Text(text = stringResource(R.string.addBoxButton))
@@ -120,3 +127,8 @@ fun BoxItem(index: Int){
         )
     }
 }
+
+data class BoxItemData(
+    val id: Int,
+    val index: Int
+)
