@@ -116,7 +116,6 @@ fun BoxItem(index: Int){
             .padding(8.dp)
             .background(
                 if (index % 2 == 0) Color.Red else Color.Blue,
-                RoundedCornerShape(8.dp)
             )
             .fillMaxWidth()
             .aspectRatio(1f)
