@@ -121,7 +121,7 @@ fun BoxItem(index: Int){
             .aspectRatio(1f)
     ) {
         Text(
-            text = "Box $index",
+            text = stringResource(R.string.insideBox, index),
             modifier = Modifier.align(Alignment.Center)
         )
     }
